@@ -11,9 +11,6 @@ def calculatelufs(filename):
     meter = pln.Meter(rate)
     loudness = meter.integrated_loudness(data)
     return loudness
-
-
-def calculatepeak(filename):
     
 
 def playwav(file):
