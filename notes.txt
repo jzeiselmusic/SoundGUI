@@ -1,0 +1,9 @@
+things to remember about the app currently:
+
+only works with 8,16, or 32 bit files 
+
+when a new row is added, all of the stored data is cleared
+
+takes a long time to load a song currently. should be sped up
+
+
