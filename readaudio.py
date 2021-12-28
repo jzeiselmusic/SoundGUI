@@ -24,7 +24,7 @@ def readwavfileslow(filename,read=True,debug=False):
 			tmp_size = wav.getnframes() - wav.tell()
 			tmp_fmt = "<" + fmt_size * channels * tmp_size
 			decoded = struct.unpack(tmp_fmt,wav.readframes(tmp_size))
-			#ret.append(decoded)
+			ret.append(decoded)
 	ret2 = []
 	for i in range(len(ret)-1):
 		temp = ret[i]
@@ -40,9 +40,9 @@ def readwavfilefast(filename):
         samplerate = wav.getframerate()
         fmt_size = sizes[wav.getsampwidth()]
         a = array.array(fmt_size)
-        a.fromfile(open(filename,mode),os.path.getsize(\
-                filename))#/a.itemsize)
-        a.tolist()
+        a.fromfile(open(filename,mode),int(os.path.getsize(\
+                filename)/a.itemsize))
+        a = a.tolist()
         return a, samplerate
 
 			
