@@ -27,6 +27,8 @@ def playwav(file):
 
 def makewindow(number):
     layout = []
+    layout += [[sg.Combo(['Album Mode','Shuffle Mode'],default_value=\
+                         'Album Mode',readonly=True,key='mode',size=(13))]]
     for i in range(1,number+1):
         layout += [sg.FileBrowse("Click to Add File",target=f"-file{i}-"),
                 sg.VSeperator(),
