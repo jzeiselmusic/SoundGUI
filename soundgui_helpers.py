@@ -64,7 +64,7 @@ def ifplaypressed(row,values):
         except:
             print(error1)
         print("loading song")
-        song, samplerate = readwavfile(file)
+        song, samplerate = readwavfilefast(file)
         song = trim(song,samplerate,start)
         filename = createwav('temporary_file.wav',samplerate,song)
         loudness = calculatelufs(filename)

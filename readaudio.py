@@ -3,8 +3,9 @@ import struct
 import numpy as np
 from scipy.io.wavfile import write
 import array
+import os
 
-def readwavfile(filename,read=True,debug=False):
+def readwavfileslow(filename,read=True,debug=False):
 	mode = 'r' if read else 'w'
 	sizes = {1:'b',2:'h',4:'i'}
 	wav = wave.open(filename,mode)
@@ -30,6 +31,19 @@ def readwavfile(filename,read=True,debug=False):
 		for k in range(len(temp)):
 			ret2.append(temp[k])
 	return ret2, samplerate
+
+
+def readwavfilefast(filename):
+        mode = 'rb'
+        sizes = {1:'b',2:'h',4:'i'}
+        wav = wave.open(filename,mode)
+        samplerate = wav.getframerate()
+        fmt_size = sizes[wav.getsampwidth()]
+        a = array.array(fmt_size)
+        a.fromfile(open(filename,mode),os.path.getsize(\
+                filename))#/a.itemsize)
+        a.tolist()
+        return a, samplerate
 
 			
 def trim(data,samplerate,start):
