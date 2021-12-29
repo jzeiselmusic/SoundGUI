@@ -3,7 +3,6 @@ import simpleaudio as sa
 import PySimpleGUI as sg
 from readaudio import *
 import os
-import pyloudnorm as pln
 import soundfile as sf
 
 def calculatelufs(filename):
