@@ -21,14 +21,6 @@ while True:
             window1 = window
             window = sg.Window("Master Tester",layout)
             window1.close()
-    elif event == "-file1-":
-        sg.Print(values["-file1-"])
-    elif event == "-file2-":
-        sg.Print(values["-file2-"])
-    elif event == "start_1":
-        sg.Print(values["start_1"])
-    elif event == "start_2":
-        sg.Print(values["start_2"])
     elif event == "stop_1":
         try:
             play_obj1.stop()

@@ -27,8 +27,6 @@ def playwav(file):
 
 def makewindow(number):
     layout = []
-    layout += [[sg.Combo(['Album Mode','Shuffle Mode'],default_value=\
-                         'Album Mode',readonly=True,key='mode',size=(13))]]
     for i in range(1,number+1):
         layout += [sg.FileBrowse("Click to Add File",target=f"-file{i}-"),
                 sg.VSeperator(),
@@ -66,8 +64,6 @@ def ifplaypressed(row,values):
         except:
             print(error1)
         print("loading song")
-        loudness = calculatelufs(file)
-        print(loudness)
         song, samplerate = readwavfileslow(file)
         song = trim(song,samplerate,start)
         if start == '00.00':
