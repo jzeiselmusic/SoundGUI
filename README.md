@@ -13,9 +13,12 @@ The current limitations are:
  - the list of tracks clears itself with you add a new row
  - There are still print statements in the code because it is still in testing 
 
+Installation:
+python -m venv env
+source env/bin/activate
+pip insatll -r requirements.txt
 
 In order to use GUI, simply run soundgui.py
-
 
 Python Libraries:
  - PySimpleGUI
