@@ -45,7 +45,6 @@ def ifplaypressed(row,values):
     error1 = "start time must be form xx.xx!"
     error2 = "file must be .wav file!"
     
-    sg.Print(f"play_{row}")
     file = values[f"-file{row}-"]
     start = values[f"start_{row}"]
     if file[-4:len(file)] != ".wav":

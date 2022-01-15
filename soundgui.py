@@ -8,7 +8,7 @@ number_rows = 1
 layout = makewindow(number_rows)
 
 
-window = sg.Window("Master Tester",layout)
+window = sg.Window("Master",layout)
 error = "window was terminated"
 while True:
     event, values = window.read()

@@ -3,6 +3,7 @@ import struct
 from scipy.io.wavfile import write
 import array
 import os
+import numpy as np
 
 def readwavfileslow(filename,read=True,debug=False):
 	mode = 'r' if read else 'w'
@@ -65,6 +66,7 @@ def createwav(filename, rate, data):
 	npdata = np.array(npdata)
 	write(filename,rate,npdata.astype(np.int16))
 	return filename
+
 
 
 
