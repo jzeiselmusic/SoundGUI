@@ -44,6 +44,7 @@ def makewindow(number):
 def ifplaypressed(row,values):
     error1 = "start time must be form xx.xx!"
     error2 = "file must be .wav file!"
+    error3 = "this is out of file length range!"
     
     file = values[f"-file{row}-"]
     start = values[f"start_{row}"]
@@ -63,14 +64,19 @@ def ifplaypressed(row,values):
             print(error1)
         print("loading song")
         song, samplerate = readwavfileslow(file)
-        song = trim(song,samplerate,start)
-        if start == '00.00':
-            play_obj = playwav(file)
+        start_secs = min_sec_2sec(start)
+        if (start_secs*samplerate >= len(song)):
+            print(error3)
+            return None
         else:
-            trimmedfile = createwav('temporary_file.wav',samplerate,song)
-            play_obj = playwav(trimmedfile)
-            os.remove('temporary_file.wav')
-        return play_obj
+            song = trim(song,samplerate,start)
+            if start == '00.00':
+                play_obj = playwav(file)
+            else:
+                trimmedfile = createwav('temporary_file.wav',samplerate,song)
+                play_obj = playwav(trimmedfile)
+                os.remove('temporary_file.wav')
+            return play_obj
     
 
 
