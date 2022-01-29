@@ -18,7 +18,7 @@ while True:
         if number_rows < 13:
             layout = makewindow(number_rows)
             window1 = window
-            window = sg.Window("Master Tester",layout)
+            window = sg.Window("Master",layout)
             window1.close()
             number_rows += 1
     elif event == "stop_1":
