@@ -8,19 +8,19 @@ number_rows = 1
 layout = makewindow(number_rows)
 
 
-window = sg.Window("Master Tester",layout)
+window = sg.Window("Master",layout)
 error = "window was terminated"
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
         break
     elif event == "add_row":
-        number_rows += 1
         if number_rows < 13:
             layout = makewindow(number_rows)
             window1 = window
-            window = sg.Window("Master Tester",layout)
+            window = sg.Window("Master",layout)
             window1.close()
+            number_rows += 1
     elif event == "stop_1":
         try:
             play_obj1.stop()
