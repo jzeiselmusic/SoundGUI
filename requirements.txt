@@ -1,0 +1,7 @@
+cffi==1.15.0
+numpy==1.22.0
+pycparser==2.21
+PySimpleGUI==4.55.1
+scipy==1.7.3
+simpleaudio==1.0.4
+SoundFile==0.10.3.post1

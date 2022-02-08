@@ -13,6 +13,15 @@ The current limitations are:
  - the list of tracks clears itself with you add a new row
  - There are still print statements in the code because it is still in testing 
 
+
+Installation:
+python -m venv env
+source env/bin/activate
+pip insatll -r requirements.txt
+
+In order to use GUI, simply run soundgui.py
+
+Python Libraries:
 *IMPORTANT
 - when entering the start time for a track, it must be in the form "xx.xx" (min.sec). For example, if you want to start the song at time 3:00, type in 03.00
 
