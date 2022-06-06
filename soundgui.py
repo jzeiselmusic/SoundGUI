@@ -1,6 +1,7 @@
 from soundgui_helpers import *
 import PySimpleGUI as sg
 
+
 #################################
 sg.theme('Reddit')
 
@@ -10,6 +11,8 @@ layout = makewindow(number_rows)
 
 window = sg.Window("Master",layout)
 error = "window was terminated"
+applyeffect = 'none'
+
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
@@ -82,29 +85,40 @@ while True:
         except:
             pass
     elif event == "play_1":
-        play_obj1 = ifplaypressed(1,values)
+        play_obj1 = ifplaypressed(1,values,applyeffect)
     elif event == "play_2":
-        play_obj2 = ifplaypressed(2,values)
+        play_obj2 = ifplaypressed(2,values,applyeffect)
     elif event == "play_3":
-        play_obj3 = ifplaypressed(3,values)
+        play_obj3 = ifplaypressed(3,values,applyeffect)
     elif event == "play_4":
-        play_obj4 = ifplaypressed(4,values)
+        play_obj4 = ifplaypressed(4,values,applyeffect)
     elif event == "play_5":
-        play_obj5 = ifplaypressed(5,values)
+        play_obj5 = ifplaypressed(5,values,applyeffect)
     elif event == "play_6":
-        play_obj6 = ifplaypressed(6,values)
+        play_obj6 = ifplaypressed(6,values,applyeffect)
     elif event == "play_7":
-        play_obj7 = ifplaypressed(7,values)
+        play_obj7 = ifplaypressed(7,values,applyeffect)
     elif event == "play_8":
-        play_obj8 = ifplaypressed(8,values)
+        play_obj8 = ifplaypressed(8,values,applyeffect)
     elif event == "play_9":
-        play_obj9 = ifplaypressed(9,values)
+        play_obj9 = ifplaypressed(9,values,applyeffect)
     elif event == "play_10":
-        play_obj10 = ifplaypressed(10,values)
+        play_obj10 = ifplaypressed(10,values,applyeffect)
     elif event == "play_11":
-        play_obj11 = ifplaypressed(11,values)
+        play_obj11 = ifplaypressed(11,values,applyeffect)
     elif event == "play_12":
-        play_obj12 = ifplaypressed(12,values)
-		
+        play_obj12 = ifplaypressed(12,values,applyeffect)
+    if event=="effectbox":
+        if values["effectbox"] == ['delay']:
+            applyeffect = 'delay' 
+        elif values["effectbox"] == ['reverb']:
+            applyeffect = 'reverb'
+        elif values["effectbox"] == ['filter']:
+            print("song will be filtered!")
+            applyeffect = 'filter'
+        elif values["effectbox"] == ['none']:
+            applyeffect = 'none'
+
+	
 window.close()
 print(error)

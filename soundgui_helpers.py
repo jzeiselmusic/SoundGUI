@@ -36,12 +36,15 @@ def makewindow(number):
                 sg.Button("Stop",key=f"stop_{i}"),
                 sg.VSeperator(),
                 sg.Multiline(default_text="00.00",size=(10),no_scrollbar=True,\
-                            key=f"start_{i}",change_submits=True)],
+                            key=f"start_{i}",change_submits=True),
+		sg.VSeperator()],
     layout += [[sg.Button("+",key="add_row")]]
+    layout += [[sg.Listbox(values=["none","delay","reverb","filter"],enable_events=True,\
+    			    expand_x=True,expand_y=True,key="effectbox")]]
     return layout
 
 
-def ifplaypressed(row,values):
+def ifplaypressed(row,values,effect):
     error1 = "start time must be form xx.xx!"
     error2 = "file must be .wav file!"
     error3 = "this is out of file length range!"
@@ -64,6 +67,17 @@ def ifplaypressed(row,values):
             print(error1)
         print("loading song")
         song, samplerate = readwavfileslow(file)
+        ##
+        if effect == 'none':
+            pass
+        elif effect == 'filter':
+            print("here")
+            song = LPF(song)
+        elif effect == 'reverb':
+            pass
+        elif effect == 'delay':
+            pass
+        ##
         start_secs = min_sec_2sec(start)
         if (start_secs*samplerate >= len(song)):
             print(error3)
@@ -80,7 +94,17 @@ def ifplaypressed(row,values):
     
 
 
-
+def LPF(song):
+    song = np.array(song) / (2**24)
+    for i in range(3,len(song)):
+        song[i] = (0.5)*song[i] + (0.25)*song[i-1] + (0.25)*song[i-2]
+    #for i in range(3,len(song)):
+     #   song[i] = song[i] + song[i-1] + song[i-2] + song[i-3]
+    #for i in range(3,len(song)):
+    #    song[i] = song[i] + song[i-1] + song[i-2] + song[i-3]
+    song = np.tanh(song)
+    song = (song*(2**24)).tolist()
+    return song
 
 
 

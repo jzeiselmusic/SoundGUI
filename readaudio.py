@@ -15,7 +15,7 @@ def min_sec_2sec(start_number):
 
 def readwavfileslow(filename,read=True,debug=False):
         mode = 'r' if read else 'w'
-        sizes = {1:'b',2:'h',4:'i'}
+        sizes = {1:'b',2:'h',3:'bbb',4:'i'}
         wav = wave.open(filename,mode)
         chunk = 256
         samplerate = wav.getframerate()

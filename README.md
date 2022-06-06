@@ -9,7 +9,7 @@ this could be used for all sorts of purposes:
  - measuring loudness and distortion levels
 
 current limitations are:
- - only accepts 8,16,or 32 bit .wav files currently
+ - only accepts .wav files currently
  - the list of tracks clears itself with you add a new row
 
 Installation:
